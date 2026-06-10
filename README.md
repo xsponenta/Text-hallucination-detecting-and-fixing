@@ -30,7 +30,6 @@ The diffusion model is used as a pretrained inpainting backend. The trainable co
 | `configs/` | Training/repair/evaluation configuration |
 | `data/prompt_manifests/` | Prompt manifests for synthetic data generation |
 | `data/benchmark_manifests/` | Stress-test prompt manifests for benchmark-like splits |
-| `docs/` | Architecture notes, benchmark plan, report, presentation script |
 | `notebooks/` | Exploratory notebook for noisy text prompt generation |
 
 Generated datasets, graph tensors, checkpoints, repaired images, and debug outputs are intentionally ignored by git.
@@ -177,11 +176,3 @@ The validation pipeline reports:
 - mask IoU, offset MAE, and node error accuracy for the GNN.
 
 The expected repair behavior is: text metrics improve, CER decreases, CLIP alignment stays stable, and outside-mask perceptual change remains low.
-
-## Documentation
-
-- [`docs/project_report.md`](docs/project_report.md) - full report and method rationale.
-- [`docs/architecture.md`](docs/architecture.md) - implementation layout and file responsibilities.
-- [`docs/benchmarks_and_approaches.md`](docs/benchmarks_and_approaches.md) - declared approaches and benchmark plan.
-- [`docs/gnn_inpainting_implementation_plan.md`](docs/gnn_inpainting_implementation_plan.md) - implementation plan.
-- [`docs/presentation_script.md`](docs/presentation_script.md) - presentation notes.
