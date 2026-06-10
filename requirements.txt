@@ -1,0 +1,14 @@
+torch>=2.0
+torchvision>=0.15
+Pillow>=10.0
+opencv-python>=4.8
+numpy>=1.24
+diffusers>=0.30
+transformers>=4.40
+accelerate>=0.30
+PyYAML>=6.0
+
+# Optional but recommended for stronger OCR/graph construction:
+# easyocr>=1.7
+# torch-geometric>=2.5
+# lpips>=0.1

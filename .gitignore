@@ -1,0 +1,26 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+*.log
+
+# Generated datasets and graph tensors
+data/synthetic/
+data/processed_graphs/
+data/real_generated/
+data/benchmarks/
+
+# Model outputs and generated repair artifacts
+outputs/
+checkpoints/
+repaired_images/
+debug_graphs/
+*.pt
+*.pth
+
+# Diffusion/model caches
+hf_cache/
+.cache/

@@ -1,0 +1,67 @@
+data:
+  synthetic_dir: data/synthetic
+  graph_dir: data/processed_graphs
+  prompt_manifest: data/prompt_manifests/noisy_text_examples.jsonl
+  benchmark_manifests:
+    textatlas5: data/benchmark_manifests/textatlas5_stress_prompts.jsonl
+    drawbench: data/benchmark_manifests/drawbench_text_stress_prompts.jsonl
+    phone_realworld: data/benchmark_manifests/phone_realworld_stress_prompts.jsonl
+  image_size: 512
+
+model:
+  node_dim: 12
+  edge_dim: 5
+  hidden_dim: 128
+  layers: 3
+  dropout: 0.1
+
+training:
+  output_dir: outputs/checkpoints
+  epochs: 30
+  min_epochs: 12
+  min_delta: 0.000001
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  validation_fraction: 0.1
+  patience: 5
+  seed: 7
+  device: auto
+
+repair:
+  mask_threshold: 0.35
+  mask_padding: 8
+  local_inpaint_strength: 0.28
+  harmonization_strength: 0.10
+  guidance_scale: 5.5
+  inference_steps: 25
+
+quality_gate:
+  max_outside_mse: 0.004
+  require_ocr_improvement: true
+
+validation:
+  benchmarks:
+    - textatlas5
+    - textatlas5m
+    - drawbench
+    - phone_realworld
+  metrics:
+    - word_accuracy
+    - ocr_accuracy
+    - ocr_f1
+    - character_error_rate
+    - clip_score
+    - clip_text_alignment_score
+    - lpips_outside_mask
+    - fid
+  short_training_hours: 2-4
+  max_training_hours: 10
+  validation_fraction: 0.1
+  acceptance:
+    wa_should_increase: true
+    ocr_accuracy_should_increase: true
+    ocr_f1_should_increase: true
+    cer_should_decrease: true
+    clip_alignment_drop_tolerance: 0.02
+    lpips_outside_mask_max: 0.10
+    fid_should_not_degrade: true
